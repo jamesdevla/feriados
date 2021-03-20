@@ -1,0 +1,9 @@
+<header class="mb-auto">
+  <div>
+    <h3 class="float-md-start mb-0">Feriados <%= Time.now.strftime("%Y") %></h3>
+    <nav class="nav nav-masthead justify-content-center float-md-end">
+      <%= link_to 'Inicio', root_path, class: "nav-link #{current_class?(root_path)}" %>
+      <%= link_to 'Feriados', holidays_index_path, class: "nav-link #{current_class?(holidays_index_path)}" %>
+    </nav>
+  </div>
+</header>
