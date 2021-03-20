@@ -1,31 +1,39 @@
 <h1>Feriados</h1>
 <h6>Informaci&oacute;n de feriados del a&ntilde;o <%= Time.now.strftime("%Y") %></h6>
-<table class="table table-dark table-striped table-hover">	
-  <thead>
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Fecha</th>
-      <th scope="col">Irrenunciable</th>
-      <th scope="col">Tipo</th>
-      <th scope="col">leyes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @data.each do |d| %>
-    <tr>
-      <th scope="row"><%=d["nombre"]%></th>
-      <th scope="row"><%=d["fecha"]%></th>
-      <th scope="row"><%= d["irrenunciable"] == "0" ? "No" : "Si" %></th>
-      <th scope="row"><%=d["tipo"]%></th>
-      <th scope="row">
-        <% if d["leyes"].present? %>
-          <% d["leyes"].each do |l| %>
-            <%= link_to l["nombre"], l["url"], class: "text-white", target: "_blank" %>
-            
-          <% end %>
-        <% end %>
-      </th>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table table-dark table-striped table-hover">	
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Irrenunciable</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">leyes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @data.empty? %>
+        <tr>
+          <th scope="row" colspan="5">Sin informaci&oacute;n</th>
+        </tr>
+      <% else%>
+      <% @data.each do |d| %>
+        <tr>
+          <th scope="row"><%=d["nombre"]%></th>
+          <th scope="row"><%=d["fecha"]%></th>
+          <th scope="row"><%= d["irrenunciable"] == "0" ? "No" : "Si" %></th>
+          <th scope="row"><%=d["tipo"]%></th>
+          <th scope="row">
+            <% if d["leyes"].present? %>
+              <% d["leyes"].each do |l| %>
+                <%= link_to l["nombre"], l["url"], class: "text-white", target: "_blank" %>
+                
+              <% end %>
+            <% end %>
+          </th>
+        </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
