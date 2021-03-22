@@ -26,7 +26,7 @@
           <th scope="row">
             <% if d["leyes"].present? %>
               <% d["leyes"].each do |l| %>
-                <%= link_to l["nombre"], l["url"], class: "text-white", target: "_blank" %>
+                <%= link_to l["nombre"], l["url"], class: "text-white", target: "_blank", rel: "noopener noreferrer" %>
                 
               <% end %>
             <% end %>
